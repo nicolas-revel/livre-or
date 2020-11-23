@@ -1,6 +1,21 @@
 <?php
 
-require_once('../config/functions.php');
+require_once('../config/config.php');
+
+/*
+Cette page possède un formulaire permettant à l’utilisateur de modifier son
+login et son mot de passe.
+
+Requête nécessaire : 
+- Mets à jours la table utilisateurs avec les données du formulaire
+
+Logique nécessaire : 
+- Affiche les infos de la Session
+- Vérifie que le nom d'utilisateur n'existe pas
+- Vérifie que le mot de passe est bien confirmé
+- Fonction qui mets à jours les infos de la BDD avec les données du formulaire
+
+*/
 
 ?>
 <!DOCTYPE html>
