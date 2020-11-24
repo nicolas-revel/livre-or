@@ -7,7 +7,7 @@ if (!empty($_POST)) {
   $verif_user = check_user($users_table);
   if ($verif_user !== false) {
     $verif_pwd = check_password($_POST['password'], $_POST['c_password']);
-    if ($verif_pwd === true) {
+    if ($verif_pwd !== false) {
       $crea_user = crea_account($database);
     }
   }
@@ -16,14 +16,6 @@ if (!empty($_POST)) {
 if (isset($crea_user) && $crea_user === true) {
   header('Location:connexion.php');
 }
-
-/*
-Le formulaire doit contenir l’ensemble des champs présents dans la table
-“utilisateurs” (sauf “id”) ainsi qu’une confirmation de mot de passe. Dès
-qu’un utilisateur remplit ce formulaire, les données sont insérées dans la
-base de données et l’utilisateur est redirigé vers la page de connexion.
-
-*/
 
 ?>
 <!DOCTYPE html>

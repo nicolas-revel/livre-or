@@ -24,8 +24,8 @@ function check_user(array $table)
 function check_password(string $str1, string $str2)
 {
   if (isset($str1, $str2)) {
-    if ($str1 === $str2) {
-      return true;
+    if ($str1 !== $str2) {
+      return false;
     } else {
     }
   }
@@ -75,7 +75,7 @@ function connex_users(array $table1)
 function upd_account($db, $form, $check_user, $check_pass)
 {
   if (!empty($form)) {
-    if (!empty($form['login']) && $check_user === true) {
+    if (!empty($form['login']) && $check_user !== false) {
       $_SESSION['login'] = mysqli_real_escape_string($db, htmlspecialchars($form['login']));
     }
     if (!empty($form['password']) && $check_pass === true) {
