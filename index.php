@@ -1,5 +1,9 @@
 <?php
 
+require_once('config/config.php');
+
+var_dump($_SESSION);
+
 /*
 Page d'accueil qui présente le site.
 Lorsque l'utilisateur n'est pas connecté :
@@ -11,8 +15,6 @@ Lorsque l'utilisateur est connecté :
   - Page de livre d'or
     - Bouton pour aller vers le formulaire de commentaire
 */
-
-require_once('config/functions.php');
 
 ?>
 <!DOCTYPE html>

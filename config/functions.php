@@ -24,11 +24,7 @@ function check_user(array $table)
 function check_password(string $str1, string $str2)
 {
   if (isset($str1, $str2)) {
-    $str1hash = password_hash($str1, PASSWORD_BCRYPT);
-    $str2hash = password_hash($str2, PASSWORD_BCRYPT);
-    $verifstr1 = password_verify($str1, $str1hash);
-    $verifstr2 = password_verify($str2, $str2hash);
-    if ($str1 === $str2 && $verifstr1 == true && $verifstr2 == true) {
+    if ($str1 === $str2) {
       return true;
     } else {
     }
@@ -45,6 +41,50 @@ function crea_account($db)
     $login = mysqli_real_escape_string($db, htmlspecialchars($_POST['login']));
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     $requete =  "INSERT INTO `utilisateurs`(`login`, `password`) VALUES ('$login', '$password')";
+    mysqli_query($db, $requete);
+    return true;
+  }
+}
+
+function set_user($user)
+{
+  if (!empty($user)) {
+    $_SESSION['id'] = $user['id'];
+    $_SESSION['login'] = $user['login'];
+    $_SESSION['password'] = $user['password'];
+    return ($_SESSION);
+  }
+}
+
+function connex_users(array $table1)
+{
+  if (!empty($_POST)) {
+    $str1 = $_POST['password'];
+    foreach ($table1 as $user) {
+      $verifstr1 = password_verify($str1, $user['password']);
+      if (($_POST['login']) == ($user['login']) && ($verifstr1) == true) {
+        set_user($user);
+        return true;
+        break;
+      } else {
+      }
+    }
+  }
+}
+
+function upd_account($db, $form, $check_user, $check_pass)
+{
+  if (!empty($form)) {
+    if (!empty($form['login']) && $check_user === true) {
+      $_SESSION['login'] = mysqli_real_escape_string($db, htmlspecialchars($form['login']));
+    }
+    if (!empty($form['password']) && $check_pass === true) {
+      $_SESSION['password'] = password_hash($form['password'], PASSWORD_BCRYPT);
+    }
+    $id = $_SESSION['id'];
+    $login = $_SESSION['login'];
+    $password = $_SESSION['password'];
+    $requete =  "UPDATE `utilisateurs` SET `login`= '$login',`password`= '$password' WHERE `id`='$id'";
     mysqli_query($db, $requete);
     return true;
   }
