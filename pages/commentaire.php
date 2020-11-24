@@ -1,24 +1,12 @@
 <?php
 
-require_once('../config/functions.php');
+require_once('../config/config.php');
 
-/*
-Ce formulaire ne contient qu’un champs permettant de rentrer son
-commentaire et un bouton de validation. Il n’est accessible qu’aux
-utilisateurs connectés. Chaque utilisateur peut poster plusieurs
-commentaires.
+$comment_success = add_comment($_POST, $_SESSION, $database);
 
-Requêtes nécessaires : 
-- Ajoute une ligne dans le tableau avec le commentaire, le id utilisateur, et la date et heure courante.
-
-Logique nécessaire : 
-- Fonction d'ajout de commentaire.
-- La variable session avec l'id utilisateur, le login utilisateur
-- Vérifier que l'utilisateur est bien connecté
-- Formulaire de type post
-- Rediriger vers la page de commentaire une fois que celui-ci a été ajouté
-
-*/
+if ($comment_success == true) {
+  header('Location:livre-or.php');
+}
 
 ?>
 <!DOCTYPE html>
@@ -32,7 +20,14 @@ Logique nécessaire :
 
 <body>
   <main>
-
+    <?php if (!empty($_SESSION)) : ?>
+      <form action="commentaire.php" method="POST">
+        <textarea name="commentaire" id="commentaire" cols="30" rows="10" placeholder="Votre commentaire ici ..."></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+    <?php else : ?>
+      <p>Vous devez être connecté pour accéder à cette session.</p>
+    <?php endif; ?>
   </main>
 </body>
 

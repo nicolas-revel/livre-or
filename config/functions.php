@@ -89,3 +89,57 @@ function upd_account($db, $form, $check_user, $check_pass)
     return true;
   }
 }
+
+function add_comment(array $form, array $user_info, $db)
+{
+  if (!empty($form['commentaire'])) {
+    $commentaire = mysqli_real_escape_string($db, htmlentities($form['commentaire']));
+    $id_utilisateur = mysqli_real_escape_string($db, htmlentities($user_info['id']));
+    $requete = "INSERT INTO `commentaires`(`commentaire`, `id_utilisateur`, `date`) VALUES ('$commentaire','$id_utilisateur', NOW())";
+    $result = mysqli_query($db, $requete);
+    return $result;
+  }
+}
+
+function list_comment($db): array
+{
+  $requete =  "SELECT commentaires.id, commentaire, id_utilisateur, utilisateurs.login, date, DATE_FORMAT(date, '%d') AS jour, DATE_FORMAT(date, '%c') AS mois, DATE_FORMAT(date, '%Y') AS annee, DATE_FORMAT(date, '%k') AS heure, DATE_FORMAT(date, '%i') AS minute FROM commentaires INNER JOIN utilisateurs ON commentaires.id_utilisateur = utilisateurs.id ORDER BY commentaires.id DESC";
+  $query_connexion = mysqli_query($db, $requete);
+  while (($result_connexion = mysqli_fetch_assoc($query_connexion)) != null) {
+    $tab_result[$result_connexion['id']] = $result_connexion;
+  }
+  return $tab_result;
+}
+
+function month_convert(array $comment)
+{
+  if (!empty($comment['mois'])) {
+    if ($comment['mois'][0] == 0 && $comment['mois'][1] == 1) {
+      $month = "Janvier";
+    } elseif ($comment['mois'][0] == 0 && $comment['mois'][1] == 2) {
+      $month = "Février";
+    } elseif ($comment['mois'][0] == 0 && $comment['mois'][1] == 3) {
+      $month = "Mars";
+    } elseif ($comment['mois'][0] == 0 && $comment['mois'][1] == 4) {
+      $month = "Avril";
+    } elseif ($comment['mois'][0] == 0 && $comment['mois'][1] == 5) {
+      $month = "Mai";
+    } elseif ($comment['mois'][0] == 0 && $comment['mois'][1] == 6) {
+      $month = "Juin";
+    } elseif ($comment['mois'][0] == 0 && $comment['mois'][1] == 7) {
+      $month = "Juillet";
+    } elseif ($comment['mois'][0] == 0 && $comment['mois'][1] == 8) {
+      $month = "Aout";
+    } elseif ($comment['mois'][0] == 0 && $comment['mois'][1] == 9) {
+      $month = "Septembre";
+    } elseif ($comment['mois'][0] == 1 && $comment['mois'][1] == 0) {
+      $month = "Octobre";
+    } elseif ($comment['mois'][0] == 1 && $comment['mois'][1] == 1) {
+      $month = "Novembre";
+    } elseif ($comment['mois'][0] == 1 && $comment['mois'][1] == 2) {
+      $month = "Décembre";
+    } else {
+    }
+    return $month;
+  }
+}
