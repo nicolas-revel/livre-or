@@ -23,7 +23,7 @@ if (isset($_GET['d'])) {
 </head>
 
 <body>
-<?php require('../config/header.php') ?>
+  <?php require('../config/header.php') ?>
 
   <main>
     <table>
@@ -32,7 +32,7 @@ if (isset($_GET['d'])) {
           <tr>
             <td>
               <h2><?= $comment['login'] ?></h2>
-              <h3>Le <?= $comment['jour'] ?> <?= month_convert($comment) ?> <?= $comment['annee'] ?></h3>
+              <h3>Le <?= $comment['jour'] ?> <?= month_convert($comment) ?> <?= $comment['annee'] ?> à <?= $comment['heure'] ?>:<?= $comment['minute'] ?></h3>
               <p><?= $comment['commentaire'] ?></p>
             </td>
           </tr>
