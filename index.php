@@ -36,7 +36,7 @@ Lorsque l'utilisateur est connecté :
 </head>
 
 <body>
-  <?php require('config/header.php') ?>
+  <?php require_once('config/header.php') ?>
   <main>
     <?php if (!empty($_SESSION)) : ?>
       <h1>Bonjour <?= $_SESSION['login'] ?> !</h1>
@@ -51,6 +51,7 @@ Lorsque l'utilisateur est connecté :
       <p>Si vous êtes déjà inscrit, vous pouvez <strong><a href="pages/inscription.php">vous connecter</a></strong> directement via notre formulaire d'inscription.</p>
     <?php endif; ?>
   </main>
+  <?php require_once('config/footer.php') ?>
 </body>
 
 </html>
