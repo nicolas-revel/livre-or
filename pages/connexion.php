@@ -10,6 +10,14 @@ if ($connex_state === true) {
   header('Location:../index.php');
 }
 
+$root_index = "../";
+$root_pages = "";
+
+if (isset($_GET['d'])) {
+  session_destroy();
+  header('Location:' . $root_index . 'index.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -21,6 +29,8 @@ if ($connex_state === true) {
 </head>
 
 <body>
+<?php require('../config/header.php') ?>
+  
   <main>
     <form action="connexion.php" method="POST">
       <input type="text" name="login" id="login" placeholder="Votre login">

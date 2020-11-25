@@ -8,6 +8,14 @@ if ($comment_success == true) {
   header('Location:livre-or.php');
 }
 
+$root_index = "../";
+$root_pages = "";
+
+if (isset($_GET['d'])) {
+  session_destroy();
+  header('Location:' . $root_index . 'index.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,6 +27,7 @@ if ($comment_success == true) {
 </head>
 
 <body>
+<?php require('../config/header.php') ?>
   <main>
     <?php if (!empty($_SESSION)) : ?>
       <form action="commentaire.php" method="POST">

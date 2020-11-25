@@ -4,6 +4,14 @@ require_once('../config/config.php');
 
 $table_comment = list_comment($database);
 
+$root_index = "../";
+$root_pages = "";
+
+if (isset($_GET['d'])) {
+  session_destroy();
+  header('Location:' . $root_index . 'index.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -15,6 +23,8 @@ $table_comment = list_comment($database);
 </head>
 
 <body>
+<?php require('../config/header.php') ?>
+
   <main>
     <table>
       <tbody>

@@ -21,6 +21,15 @@ if (isset($_POST['submit'])) {
 }
 
 var_dump($verif_password);
+// var_dump($_SERVER);
+
+$root_index = "../";
+$root_pages = "";
+
+if (isset($_GET['d'])) {
+  session_destroy();
+  header('Location:' . $root_index . 'index.php');
+}
 
 ?>
 <!DOCTYPE html>
@@ -33,6 +42,7 @@ var_dump($verif_password);
 </head>
 
 <body>
+  <?php require('../config/header.php') ?>
   <main>
     <form action="profil.php" method="POST">
       <p>Mon nom d'utilisateur : <?= $_SESSION['login'] ?></p>

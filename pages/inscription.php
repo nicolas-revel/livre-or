@@ -17,6 +17,14 @@ if (isset($crea_user) && $crea_user === true) {
   header('Location:connexion.php');
 }
 
+$root_index = "../";
+$root_pages = "";
+
+if (isset($_GET['d'])) {
+  session_destroy();
+  header('Location:' . $root_index . 'index.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -28,6 +36,8 @@ if (isset($crea_user) && $crea_user === true) {
 </head>
 
 <body>
+<?php require('../config/header.php') ?>
+
   <main>
     <form action="inscription.php" method="POST">
       <input type="text" name="login" id="login" placeholder="Créez votre nom d'utilisateur">
