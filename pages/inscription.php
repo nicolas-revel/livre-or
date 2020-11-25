@@ -37,7 +37,6 @@ if (isset($_GET['d'])) {
 
 <body>
 <?php require('../config/header.php') ?>
-
   <main>
     <form action="inscription.php" method="POST">
       <input type="text" name="login" id="login" placeholder="Créez votre nom d'utilisateur">
@@ -52,6 +51,7 @@ if (isset($_GET['d'])) {
       <p>Merci de bien confirmer votre mot de passe.</p>
     <?php endif; ?>
   </main>
+  <?php require_once('../config/footer.php') ?>
 </body>
 
 </html>

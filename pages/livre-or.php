@@ -24,7 +24,6 @@ if (isset($_GET['d'])) {
 
 <body>
   <?php require('../config/header.php') ?>
-
   <main>
     <table>
       <tbody>
@@ -40,6 +39,7 @@ if (isset($_GET['d'])) {
       </tbody>
     </table>
   </main>
+  <?php require_once('../config/footer.php') ?>
 </body>
 
 </html>

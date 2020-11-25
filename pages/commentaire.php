@@ -27,7 +27,7 @@ if (isset($_GET['d'])) {
 </head>
 
 <body>
-<?php require('../config/header.php') ?>
+  <?php require('../config/header.php') ?>
   <main>
     <?php if (!empty($_SESSION)) : ?>
       <form action="commentaire.php" method="POST">
@@ -38,6 +38,7 @@ if (isset($_GET['d'])) {
       <p>Vous devez être connecté pour accéder à cette session.</p>
     <?php endif; ?>
   </main>
+  <?php require_once('../config/footer.php') ?>
 </body>
 
 </html>

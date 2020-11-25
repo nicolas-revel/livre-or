@@ -29,8 +29,7 @@ if (isset($_GET['d'])) {
 </head>
 
 <body>
-<?php require('../config/header.php') ?>
-  
+  <?php require('../config/header.php') ?>
   <main>
     <form action="connexion.php" method="POST">
       <input type="text" name="login" id="login" placeholder="Votre login">
@@ -38,6 +37,7 @@ if (isset($_GET['d'])) {
       <button type="submit" value="submit">Se connecter</button>
     </form>
   </main>
+  <?php require_once('../config/footer.php') ?>
 </body>
 
 </html>
