@@ -24,7 +24,7 @@ $root_css = "../css/";
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <link rel="stylesheet" href="<?= $root_css ?>custom.css">
-  <title>Connexion - Livre d'or</title>
+  <title>Connexion - La Guarrigue</title>
 </head>
 
 <body class="d-flex flex-column justify-content-between align-items-center h-100">
@@ -37,7 +37,7 @@ $root_css = "../css/";
       <div class="form-group">
         <input type="password" name="password" class="form-control" id="password" placeholder="Votre mot de passe" required>
       </div>
-      <button type="submit" value="submit" class="btn btn-primary mt-3">Se connecter</button>
+      <button type="submit" value="submit" class="btn btn-dark mt-3">Se connecter</button>
     </form>
     <?php if (!empty($_POST) && $connex_state !== true) : ?>
       <p class="alert alert-danger mt-4 mb-0">Votre nom d'utilisateur ou votre mot de passe est incorect.</p>

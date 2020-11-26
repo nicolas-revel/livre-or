@@ -18,7 +18,7 @@
             <a class="nav-link" href="<?= $root_pages ?>profil.php">Mon profil</a>
           </li>
           <li class="nav-item <?php if ($_SERVER['SCRIPT_NAME'] === '/livre-or/pages/inscription.php') : ?>active<?php endif; ?>">
-            <a class="nav-link" href="<?php $_SERVER['PHP_SELF'] ?>?d"><button class="btn btn-primary m-0">Déconnexion</button></a>
+            <a class="nav-link" href="<?php $_SERVER['PHP_SELF'] ?>?d"><button class="btn btn-dark m-0">Déconnexion</button></a>
           </li>
       </div>
     </nav>
