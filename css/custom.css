@@ -1,0 +1,23 @@
+body {
+	background-image: url("../img/background-marseille.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: fixed;
+}
+#mainindex,
+#mainconnex,
+#maininsc,
+#maincomment,
+#mainprofil {
+	background-color: #ffffffdc;
+}
+
+#mainindex a,
+footer a {
+	text-decoration: none;
+	color: black;
+}
+
+textarea {
+	resize: none;
+}
