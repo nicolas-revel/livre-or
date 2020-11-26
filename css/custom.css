@@ -1,0 +1,8 @@
+body {
+	background-image: url("../img/background-marseille.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+#mainindex {
+	background-color: #ffffffdc;
+}
