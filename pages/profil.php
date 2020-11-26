@@ -20,9 +20,6 @@ if (isset($_POST['submit'])) {
   $up_user = upd_account($database, $_POST, $verif_user, $verif_password);
 }
 
-var_dump($verif_password);
-// var_dump($_SERVER);
-
 $root_index = "../";
 $root_pages = "";
 $root_css = "../css/";

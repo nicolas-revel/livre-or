@@ -14,10 +14,6 @@ $root_index = "../";
 $root_pages = "";
 $root_css = "../css/";
 
-if (isset($_GET['d'])) {
-  session_destroy();
-  header('Location:' . $root_index . 'index.php');
-}
 
 ?>
 <!DOCTYPE html>
@@ -33,16 +29,19 @@ if (isset($_GET['d'])) {
 
 <body class="d-flex flex-column justify-content-between align-items-center h-100">
   <?php require_once('../config/header.php') ?>
-  <main class="container p-5 rounded-lg w-25" id="mainconnex">
+  <main class="container p-4 rounded-lg w-25" id="mainconnex">
     <form action="connexion.php" method="POST">
       <div class="form-group">
-        <input type="text" name="login" class="form-control" id="login" placeholder="Votre login">
+        <input type="text" name="login" class="form-control" id="login" placeholder="Votre login" required autofocus>
       </div>
       <div class="form-group">
-        <input type="password" name="password" class="form-control" id="password" placeholder="Votre mot de passe">
+        <input type="password" name="password" class="form-control" id="password" placeholder="Votre mot de passe" required>
       </div>
-      <button type="submit" value="submit" class="btn btn-primary mt-4">Se connecter</button>
+      <button type="submit" value="submit" class="btn btn-primary mt-3">Se connecter</button>
     </form>
+    <?php if (!empty($_POST) && $connex_state !== true) : ?>
+      <p class="alert alert-danger mt-4 mb-0">Votre nom d'utilisateur ou votre mot de passe est incorect.</p>
+    <?php endif; ?>
   </main>
   <?php require_once('../config/footer.php') ?>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
