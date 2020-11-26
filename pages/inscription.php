@@ -2,15 +2,22 @@
 
 require_once('../config/config.php');
 
-if (!empty($_POST)) {
-  $users_table = list_users($database);
-  $verif_user = check_user($users_table);
-  if ($verif_user !== false) {
-    $verif_pwd = check_password($_POST['password'], $_POST['c_password']);
-    if ($verif_pwd !== false) {
-      $crea_user = crea_account($database);
-    }
-  }
+$table_users = list_users($database);
+
+if (!empty($_POST['login'])) {
+  $verif_user = check_user($table_users);
+} else {
+  $verif_user = null;
+}
+
+if (!empty($_POST['password'])) {
+  $verif_pwd = check_password($_POST['password'], $_POST['c_password']);
+} else {
+  $verif_pwd = null;
+}
+
+if (isset($_POST['submit']) && $verif_pwd !== false && $verif_user !== false) {
+  $crea_user = crea_account($database);
 }
 
 if (isset($crea_user) && $crea_user === true) {
@@ -53,14 +60,12 @@ if (isset($_GET['d'])) {
       </div>
       <button type="submit" name="submit" class="btn btn-primary">Valider mon inscription</button>
     </form>
-    <?php if (isset($_POST)) : ?>
-      <?php if (isset($verif_user) && $verif_user === false) : ?>
-        <p class="alert alert-danger mt-3 mb-0">Ce nom d'utilisateur existe déjà.</p>
-      <?php endif; ?>
-      <?php if (isset($verif_pwd) && $verif_pwd === false) : ?>
-        <p class="alert alert-danger mt-3 mb-0">Merci de bien confirmer votre mot de passe.</p>
-      <?php endif; ?>
-    <?php endif ?>
+    <?php if (isset($verif_user) && $verif_user === false) : ?>
+      <p class="alert alert-danger mt-3 mb-0">Ce nom d'utilisateur existe déjà.</p>
+    <?php endif; ?>
+    <?php if (isset($verif_pwd) && $verif_pwd === false) : ?>
+      <p class="alert alert-danger mt-3 mb-0">Merci de bien confirmer votre mot de passe.</p>
+    <?php endif; ?>
   </main>
   <?php require_once('../config/footer.php') ?>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

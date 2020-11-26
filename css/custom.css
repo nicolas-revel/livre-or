@@ -2,7 +2,16 @@ body {
 	background-image: url("../img/background-marseille.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
+	background-position: fixed;
 }
-#mainindex, #mainconnex, #maininsc {
+#mainindex,
+#mainconnex,
+#maininsc,
+#maincomment,
+#mainprofil {
 	background-color: #ffffffdc;
+}
+
+textarea {
+	resize: none;
 }

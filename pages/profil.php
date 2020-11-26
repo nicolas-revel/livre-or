@@ -31,7 +31,7 @@ if (isset($_GET['d'])) {
 
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="h-100">
 
 <head>
   <meta charset="UTF-8">
@@ -41,21 +41,27 @@ if (isset($_GET['d'])) {
   <title>Votre profil - Livre d'or</title>
 </head>
 
-<body>
+<body class="d-flex flex-column justify-content-between align-items-center h-100">
   <?php require('../config/header.php') ?>
-  <main>
+  <main class="container p-5 rounded-lg w-25" id="mainprofil">
     <form action="profil.php" method="POST">
       <p>Mon nom d'utilisateur : <?= $_SESSION['login'] ?></p>
-      <input type="text" name="login" id="login" placeholder="Modifier votre nom d'utilisateur">
-      <input type="password" name="password" id="password" placeholder="Modifier votre mot de passe">
-      <input type="password" name="c_password" id="c_password" placeholder="Confirmez votre nouveau mot de passe">
-      <button type="submit" name="submit">Mettre à jour</button>
+      <div class="form-group">
+        <input type="text" name="login" id="login" class="form-control" placeholder="Modifier votre nom d'utilisateur">
+      </div>
+      <div class="form-group">
+        <input type="password" name="password" id="password" class="form-control" placeholder="Modifier votre mot de passe">
+      </div>
+      <div class="form-group">
+        <input type="password" name="c_password" id="c_password" class="form-control" placeholder="Confirmez votre nouveau mot de passe">
+      </div>
+      <button type="submit" name="submit" class="btn btn-primary">Mettre à jour</button>
     </form>
     <?php if (isset($verif_user) && $verif_user === false) : ?>
-      <p>Ce nom d'utilisateur existe déjà.</p>
+      <p class="alert alert-danger mt-3 mb-0">Ce nom d'utilisateur existe déjà.</p>
     <?php endif; ?>
     <?php if (isset($verif_password) && $verif_password === false) : ?>
-      <p>Merci de bien confirmer votre mot de passe.</p>
+      <p class="alert alert-danger mt-3 mb-0">Merci de bien confirmer votre mot de passe.</p>
     <?php endif; ?>
   </main>
   <?php require_once('../config/footer.php') ?>

@@ -19,7 +19,7 @@ if (isset($_GET['d'])) {
 
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="h-100">
 
 <head>
   <meta charset="UTF-8">
@@ -29,16 +29,19 @@ if (isset($_GET['d'])) {
   <title>Votre commentaire - Livre d'or</title>
 </head>
 
-<body>
+<body class="d-flex flex-column justify-content-between align-items-center h-100">
   <?php require_once('../config/header.php') ?>
-  <main>
+  <main class="container d-flex flex-column justify-content-between p-4 rounded" id="maincomment">
     <?php if (!empty($_SESSION)) : ?>
+      <h1 class="display-4 mb-5">Laissez nous un avis sur votre passage !</h1>
       <form action="commentaire.php" method="POST">
-        <textarea name="commentaire" id="commentaire" cols="30" rows="10" placeholder="Votre commentaire ici ..."></textarea>
-        <button type="submit">Envoyer</button>
+        <div class="form-group mr-5 ml-5 mb-5">
+          <textarea name="commentaire" id="commentaire" class="form-control" cols="30" rows="10" placeholder="Votre commentaire ici ..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary align-self-end">Envoyer</button>
       </form>
     <?php else : ?>
-      <p>Vous devez être connecté pour accéder à cette session.</p>
+      <p class="alert alert-danger">Vous devez être connecté pour accéder à cette section.</p>
     <?php endif; ?>
   </main>
   <?php require_once('../config/footer.php') ?>
