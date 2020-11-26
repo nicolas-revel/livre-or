@@ -31,13 +31,17 @@ if (isset($_GET['d'])) {
   <title>Connexion - Livre d'or</title>
 </head>
 
-<body class="d-flex flex-column justify-content-between h-100">
+<body class="d-flex flex-column justify-content-between align-items-center h-100">
   <?php require_once('../config/header.php') ?>
-  <main>
+  <main class="container p-5 rounded-lg w-25" id="mainconnex">
     <form action="connexion.php" method="POST">
-      <input type="text" name="login" id="login" placeholder="Votre login">
-      <input type="password" name="password" id="password" placeholder="Votre mot de passe">
-      <button type="submit" value="submit">Se connecter</button>
+      <div class="form-group">
+        <input type="text" name="login" class="form-control" id="login" placeholder="Votre login">
+      </div>
+      <div class="form-group">
+        <input type="password" name="password" class="form-control" id="password" placeholder="Votre mot de passe">
+      </div>
+      <button type="submit" value="submit" class="btn btn-primary mt-4">Se connecter</button>
     </form>
   </main>
   <?php require_once('../config/footer.php') ?>

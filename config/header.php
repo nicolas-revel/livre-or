@@ -7,7 +7,7 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto d-inline-flex align-items-center">
           <li class="nav-item <?php if ($_SERVER['SCRIPT_NAME'] === '/livre-or/index.php') : ?>active<?php endif; ?>">
             <a class="nav-link" href="<?= $root_index ?>index.php">Accueil<span class="sr-only">(current)</span></a>
           </li>
@@ -18,7 +18,7 @@
             <a class="nav-link" href="<?= $root_pages ?>profil.php">Mon profil</a>
           </li>
           <li class="nav-item <?php if ($_SERVER['SCRIPT_NAME'] === '/livre-or/pages/inscription.php') : ?>active<?php endif; ?>">
-            <a class="nav-link" href="<?php $_SERVER['PHP_SELF'] ?>?d"><button>Déconnexion</button></a>
+            <a class="nav-link" href="<?php $_SERVER['PHP_SELF'] ?>?d"><button class="btn btn-primary m-0">Déconnexion</button></a>
           </li>
       </div>
     </nav>
